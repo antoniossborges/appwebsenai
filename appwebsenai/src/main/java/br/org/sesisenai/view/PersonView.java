@@ -1,6 +1,8 @@
-package com.example.appwebsenai;
+package br.org.sesisenai.view;
 
-import org.springframework.stereotype.Controller;
+import br.org.sesisenai.controller.PersonRepository;
+import br.org.sesisenai.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -8,8 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class PersonController {
+public class PersonView {
 
+    @Autowired
+    PersonRepository personRepository;
     List<Person> persons = new ArrayList<>();
     int id = 0;
 
@@ -20,6 +24,7 @@ public class PersonController {
                 return p;
             }
         }
+
         return null;
     }
 
@@ -43,7 +48,8 @@ public class PersonController {
         person.setName(name);
         person.setSexo(sexo);
         id++;
-        person.setId(id);
+        person.setId((long) id);
+        personRepository.save(person);
         persons.add(person);
         return person;
     }

@@ -1,4 +1,4 @@
-package com.example.appwebsenai;
+package br.org.sesisenai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
