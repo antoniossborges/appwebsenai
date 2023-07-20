@@ -1,4 +1,4 @@
-package com.example.appwebsenai;
+package com.example.appwebsenai.model;
 
 public class Person {
 
