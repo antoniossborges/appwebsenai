@@ -22,7 +22,7 @@ public class PersonView {
 
     @DeleteMapping("/person")
     public String deletePerson(@PathParam("name") String name){
-        Person person = new Person();
+        controller.removePerson(name);
 
         return "Pessoa com o nome de " + name + " foi deletada";
     }
@@ -33,10 +33,13 @@ public class PersonView {
     }
 
     @PutMapping("/person")
-    public Person updatePerson(@PathParam("id") int id, @PathParam("name") String name){
-        Person p = new Person();
+    public Person updatePerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
+        return controller.editPerson(name, sexo);
+    }
 
-        return p;
+    @GetMapping("/all")
+    public List<Person> listAll(){
+        return controller.listAll();
     }
 
     @GetMapping("/home")
