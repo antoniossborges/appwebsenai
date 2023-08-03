@@ -1,5 +1,6 @@
 package com.example.appwebsenai.controller;
 
+import com.example.appwebsenai.model.AccountType;
 import com.example.appwebsenai.model.Conta;
 import com.example.appwebsenai.model.ContaCorrentePF;
 import com.example.appwebsenai.model.Person;
@@ -23,16 +24,34 @@ public class BancoController implements ContaCorrente{
         return null;
     }
 
-    public ContaCorrentePF criarConta(String name) throws Exception {
+    public ContaCorrentePF criarConta(String name, String accountType) throws Exception {
         ContaCorrentePF contaCorrentePF = new ContaCorrentePF();
-        number++;
-        contaCorrentePF.setNumeroConta(number);
-        Person person =controller.findPerson(name);
-        if(person != null){
+        StringBuilder message = new StringBuilder();
+        if(accountType == null){
+            message.append("\nNecessário informar o tipo da conta!");
+        }
+        switch (accountType){
+            case "POUPANCA" :
+                contaCorrentePF.setAccountType(AccountType.CONTA_POUPANCA);
+                break;
+            case "CORRENTE" :
+                contaCorrentePF.setAccountType(AccountType.CONTA_CORRENTE);
+            default:
+                message.append("\nTipo da conta não é suportado!");
+        }
+
+        Person person = controller.findPerson(name);
+        if(person != null && contaCorrentePF.getError() == null){
+            number++;
+            contaCorrentePF.setNumeroConta(number);
             contaCorrentePF.setPerson(person);
             bancoRepository.save(contaCorrentePF);
-        }else{
-            throw new Exception("Pessoa não está cadastrada");
+        }else if(contaCorrentePF.getError() == null){
+            message.append("\nPessoa ");
+            message.append(name).append(" informada não foi cadastrada");
+        }
+        if(!message.isEmpty()){
+            contaCorrentePF.setError(message.toString());
         }
 
         return contaCorrentePF;
