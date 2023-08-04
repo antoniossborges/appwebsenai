@@ -39,7 +39,6 @@ public class BancoController implements ContaCorrente{
             default:
                 message.append("\nTipo da conta não é suportado!");
         }
-
         Person person = controller.findPerson(name);
         if(person != null && contaCorrentePF.getError() == null){
             number++;
@@ -77,8 +76,22 @@ public class BancoController implements ContaCorrente{
     }
 
     @Override
-    public void transferir(Double quantidade, Conta conta) {
+    public String transferir(Long contaOrigem, Long contaDestino, Double valor) {
+        String message = "";
+        ContaCorrentePF destino = bancoRepository.findById(contaDestino).get();
+        ContaCorrentePF origem = bancoRepository.findById(contaOrigem).get();
 
+        if(origem.getSaldo() >= valor){
+            destino.setSaldo(destino.getSaldo() + valor);
+            origem.setSaldo(origem.getSaldo() - valor);
+            bancoRepository.save(destino);
+            bancoRepository.save(origem);
+            message = "A conta do(a) " + destino.getPerson().getName() + " recebeu a transferência no valor de R$ " + valor;
+        }else{
+            message = message + " Saldo insuficiente para a operação";
+        }
+
+        return message;
     }
 
     @Override
