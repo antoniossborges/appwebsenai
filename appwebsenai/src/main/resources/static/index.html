@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div>
+    <a href="index.html">Início</a> || <a href="account.html">Conta</a>
+</div>
+
+<div>
+    <h1>Cadastro de Pessoa</h1>
+
+    <form id="cadastroForm">
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" readonly><br><br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label>Sexo:</label>
+        <input type="radio" id="sexo_masculino" name="sexo" value="Masculino" required>
+        <label for="sexo_masculino">Masculino</label>
+        <input type="radio" id="sexo_feminino" name="sexo" value="Feminino">
+        <label for="sexo_feminino">Feminino</label>
+        <input type="radio" id="sexo_outro" name="sexo" value="Outro">
+        <label for="sexo_outro">Outro</label><br><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

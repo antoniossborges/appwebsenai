@@ -88,6 +88,11 @@ public class BancoController implements ContaCorrente{
             bancoRepository.save(origem);
             message = "A conta do(a) " + destino.getPerson().getName() + " recebeu a transferência no valor de R$ " + valor;
         }else{
+            try{
+
+            } catch (Exception e){
+                e.getStackTrace();
+            }
             message = message + " Saldo insuficiente para a operação";
         }
 
