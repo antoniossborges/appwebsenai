@@ -31,6 +31,10 @@ public class PersonView {
     public Person addPerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
         return controller.addPerson(name, sexo);
     }
+    @PostMapping("/person1")
+    public Person addPerson(@RequestBody Person person){
+        return person;
+    }
 
     @PutMapping("/person")
     public Person updatePerson(@PathParam("name") String name, @PathParam("sexo") String sexo){

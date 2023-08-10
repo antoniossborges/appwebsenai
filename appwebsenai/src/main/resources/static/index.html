@@ -13,28 +13,39 @@
 
 <div>
     <h1>Cadastro de Pessoa</h1>
-
     <form id="cadastroForm">
         <label for="id">Id:</label>
         <input type="text" id="id" name="id" readonly><br><br>
 
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <!--<select id="sexo" name="sexo">
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>-->
 
-        <label>Sexo:</label>
-        <input type="radio" id="sexo_masculino" name="sexo" value="Masculino" required>
-        <label for="sexo_masculino">Masculino</label>
-        <input type="radio" id="sexo_feminino" name="sexo" value="Feminino">
-        <label for="sexo_feminino">Feminino</label>
-        <input type="radio" id="sexo_outro" name="sexo" value="Outro">
-        <label for="sexo_outro">Outro</label><br><br>
-
+        <label for="sexo">Sexo:</label>
+        <input type="text" id="sexo" name="sexo" required><br><br>
         <button type="submit">Salvar</button>
     </form>
-
-
 </div>
 
+<div>
+    <button id="btnListarPessoas">Listar Pessoas</button>
+    <table id="tabelaPessoas">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sexo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Dados das pessoas serão adicionados aqui -->
+        </tbody>
+    </table>
+
+</div>
 <script src="script.js"></script>
 </body>
 </html>
