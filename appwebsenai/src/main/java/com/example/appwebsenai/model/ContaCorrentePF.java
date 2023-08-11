@@ -1,6 +1,7 @@
 package com.example.appwebsenai.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "conta")
@@ -17,8 +18,19 @@ public class ContaCorrentePF{
     private AccountType accountType;
 
     @Transient
+    //@Column
+    private Date dataAtualizacao;
+
+    @Transient
     private String error;
 
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
 
     public AccountType getAccountType() {
         return accountType;
