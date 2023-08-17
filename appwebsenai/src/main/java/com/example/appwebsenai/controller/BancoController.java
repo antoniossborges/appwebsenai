@@ -25,6 +25,10 @@ public class BancoController implements ContaCorrente{
         return null;
     }
 
+    public void delete(String name){
+        bancoRepository.delete(this.consultaConta(name));
+    }
+
     public ContaCorrentePF criarConta(String name, String accountType) throws Exception {
         ContaCorrentePF contaCorrentePF = new ContaCorrentePF();
         StringBuilder message = new StringBuilder();
@@ -64,14 +68,7 @@ public class BancoController implements ContaCorrente{
         for(ContaCorrentePF cc : contas){
             if(cc.getPerson() != null && cc.getPerson().getName().equals(name)){
 
-                if(cc.getDataAtualizacao().equals(new Date())){
-                    return cc;
-                }else{
-                    cc.setDataAtualizacao( new Date());
-                    cc.setSaldo(cc.getSaldo() * 1.001);
-                    bancoRepository.save(cc);
-
-                }
+               return cc;
 
 
             }
