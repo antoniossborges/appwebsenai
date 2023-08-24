@@ -3,6 +3,7 @@ package com.example.appwebsenai.view;
 import com.example.appwebsenai.controller.Controller;
 import com.example.appwebsenai.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -26,7 +27,7 @@ public class PersonView {
 
         return "Pessoa com o nome de " + name + " foi deletada";
     }
-
+    //@PreAuthorize("hasRole('USER')")
     @PostMapping("/person")
     public Person addPerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
         return controller.addPerson(name, sexo);
@@ -40,6 +41,7 @@ public class PersonView {
     public Person updatePerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
         return controller.editPerson(name, sexo);
     }
+
 
     @GetMapping("/all")
     public List<Person> listAll(){

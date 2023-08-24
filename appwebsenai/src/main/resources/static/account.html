@@ -32,13 +32,27 @@
   </div>
 
   <div>
+    <label for="nomePessoa">Nome da Pessoa:</label>
+    <input type="text" id="nomePessoa" value="" readonly>
+  </div>
+
+  <div>
     <label for="erroServidor">Erro do Servidor:</label>
     <textarea id="erroServidor" rows="3" readonly></textarea>
   </div>
 
-  <button type="submit">Salvar</button>
+  <button type="button">Salvar</button>
+  
+  <!-- Combobox para selecionar a pessoa -->
+  <div>
+    <label for="selectPessoa">Selecione uma Pessoa:</label>
+    <select id="selectPessoa">
+      <!-- Opções serão adicionadas aqui via JavaScript -->
+    </select>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<script src="conta.js"></script>
 </body>
 </html>
+
