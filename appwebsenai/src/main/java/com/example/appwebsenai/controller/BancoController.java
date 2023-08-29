@@ -56,16 +56,18 @@ public class BancoController implements ContaCorrente{
         return contaCorrentePF;
     }
 
-    public ContaCorrentePF consultaConta(String name){
+    public ContaCorrentePF consultaConta(Long id){
 
-        List<ContaCorrentePF> contas = (List<ContaCorrentePF>) bancoRepository.findAll();
+        ContaCorrentePF cc = bancoRepository.findById(id).get();
 
-        for(ContaCorrentePF cc : contas){
-            if(cc.getPerson() != null && cc.getPerson().getName().equals(name)){
-                return cc;
-            }
+        if(cc.getAccountType().equals(AccountType.CONTA_POUPANCA)){
+            cc.setSaldo(cc.getSaldo() * 1.01);
+            //bancoRepository.save(cc);
+
         }
-        return null;
+        return cc;
+
+
     }
 
 
