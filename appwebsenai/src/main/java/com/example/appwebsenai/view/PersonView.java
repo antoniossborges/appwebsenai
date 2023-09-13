@@ -3,7 +3,6 @@ package com.example.appwebsenai.view;
 import com.example.appwebsenai.controller.Controller;
 import com.example.appwebsenai.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
