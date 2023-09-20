@@ -10,6 +10,7 @@ public class ContaCorrentePF{
     @Id
     @Column(name = "numero_conta")
     private Long numeroConta;
+    @Transient
     private Double saldo;
     @OneToOne
     @JoinColumn(name = "person_id")

@@ -26,16 +26,21 @@ public class PersonView {
 
         return "Pessoa com o nome de " + name + " foi deletada";
     }
-
+    //@PreAuthorize("hasRole('USER')")
     @PostMapping("/person")
     public Person addPerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
         return controller.addPerson(name, sexo);
+    }
+    @PostMapping("/person1")
+    public Person addPerson(@RequestBody Person person){
+        return person;
     }
 
     @PutMapping("/person")
     public Person updatePerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
         return controller.editPerson(name, sexo);
     }
+
 
     @GetMapping("/all")
     public List<Person> listAll(){

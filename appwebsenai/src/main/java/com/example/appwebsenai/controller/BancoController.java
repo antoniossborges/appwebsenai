@@ -61,9 +61,9 @@ public class BancoController implements ContaCorrente{
         return contaCorrentePF;
     }
 
-    public ContaCorrentePF consultaConta(String name){
+    public ContaCorrentePF consultaConta(Long id){
 
-        List<ContaCorrentePF> contas = (List<ContaCorrentePF>) bancoRepository.findAll();
+        ContaCorrentePF cc = bancoRepository.findById(id).get();
 
         for(ContaCorrentePF cc : contas){
             if(cc.getPerson() != null && cc.getPerson().getName().equals(name)){
@@ -73,7 +73,9 @@ public class BancoController implements ContaCorrente{
 
             }
         }
-        return null;
+        return cc;
+
+
     }
 
 
@@ -96,6 +98,11 @@ public class BancoController implements ContaCorrente{
             bancoRepository.save(origem);
             message = "A conta do(a) " + destino.getPerson().getName() + " recebeu a transferência no valor de R$ " + valor;
         }else{
+            try{
+
+            } catch (Exception e){
+                e.getStackTrace();
+            }
             message = message + " Saldo insuficiente para a operação";
         }
 
