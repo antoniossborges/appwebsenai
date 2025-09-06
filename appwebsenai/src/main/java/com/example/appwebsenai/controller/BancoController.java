@@ -26,7 +26,7 @@ public class BancoController implements ContaCorrente{
     }
 
     public void delete(String name){
-        bancoRepository.delete(this.consultaConta(1L));
+        bancoRepository.delete(this.consultaConta(1l));
     }
 
     public ContaCorrentePF criarConta(String name, String accountType) throws Exception {
@@ -64,7 +64,7 @@ public class BancoController implements ContaCorrente{
     public ContaCorrentePF consultaConta(Long id){
 
         ContaCorrentePF cc = bancoRepository.findById(id).get();
-     
+
         return cc;
     }
 
