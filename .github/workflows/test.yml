@@ -21,6 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build, Testes e Jacoco
+        working-directory: ./appwebsenai
         run: mvn clean verify
 
       - name: Upload cobertura para Codecov
