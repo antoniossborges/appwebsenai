@@ -26,6 +26,10 @@ public class Controller {
         return null;
     }
 
+    public Person findPersonById(Integer id){
+        return personRepository.findById(id).get();
+    }
+
     public Person addPerson(String name, String sexo){
         Person person = new Person();
         person.setName(name);
@@ -41,10 +45,9 @@ public class Controller {
         personRepository.delete(person);
     }
 
-    public Person editPerson(String name, String sexo){
-        Person person = findPerson(name);
-        person.setSexo(sexo);
-        personRepository.save(person);
+    public Person editPerson(Person person){
+        Person personManaged = findPersonById(person.getId());
+        personRepository.save(personManaged);
         return person;
     }
 

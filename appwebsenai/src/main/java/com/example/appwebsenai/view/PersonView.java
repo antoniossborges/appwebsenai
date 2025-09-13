@@ -36,12 +36,6 @@ public class PersonView {
         return person;
     }
 
-    @PutMapping("/person")
-    public Person updatePerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
-        return controller.editPerson(name, sexo);
-    }
-
-
     @GetMapping("/all")
     public List<Person> listAll(){
         return controller.listAll();
